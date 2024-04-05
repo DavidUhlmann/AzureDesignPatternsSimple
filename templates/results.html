@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Results</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .btn-custom {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: #45a049;
+        }
+
+        .btn-container {
+            display: inline-block;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Quiz Results</h2>
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">Well done!</h4>
+            <p>You answered {{ correct_answers }} out of {{ total_questions }} questions correctly!</p>
+            <hr>
+            <p class="mb-0">
+                {% if correct_answers == total_questions %}
+                    Stunning, what a pro!
+                {% elif correct_answers / total_questions >= 0.8 %}
+                    Very nice, you know design patterns very well.
+                {% else %}
+                    You clearly need to study more.
+                {% endif %}
+            </p>
+        </div>
+
+        {% if patterns_details %}
+        <h3 class="mt-4">Patterns to Review:</h3>
+        <div class="list-group">
+            {% for pattern in patterns_details %}
+            <a href="{{ pattern['Link'] }}" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ pattern['DesignPattern'] }}</h5>
+                </div>
+                <p class="mb-1">{{ pattern['Description'] }}</p>
+            </a>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="text-center mt-3">
+            <div class="btn-container">
+                <button class="btn btn-custom" id="repeat-quiz-btn">Repeat Quiz</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link to the external JavaScript file at the end of the body -->
+     <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

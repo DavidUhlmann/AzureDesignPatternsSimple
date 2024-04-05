@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script>
+        let countdown;
+        let seconds = 10;
+
+        function startCountdown() {
+            countdown = setInterval(function() {
+                document.getElementById('countdown').innerHTML = `Time remaining: ${seconds} seconds`;
+                seconds--;
+
+                if (seconds < 0) {
+                    clearInterval(countdown);
+                    document.getElementById('countdown').style.display = 'none';
+                    document.getElementById('answer').style.display = 'block';
+                }
+            }, 1000);
+        }
+
+        window.onload = startCountdown;
+    </script>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                Question {{ question_num }} of {{ total_questions }}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ question['DesignPattern'] }}</h5>
+                <p id="countdown" class="card-text"></p>
+                <div id="answer" class="card-text" style="display: none;">
+                    <p>{{ question['Description'] }}</p>
+                    <form action="{{ url_for('answer') }}" method="post" class="d-flex justify-content-between">
+                        <button type="submit" name="answer" value="yes" class="btn btn-success">Yes</button>
+                        <button type="submit" name="answer" value="no" class="btn btn-danger">No</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

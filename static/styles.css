@@ -1,0 +1,64 @@
+/* styles.css */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+body {
+    display: flex;
+    flex-direction: column;
+}
+.container {
+    flex: 1;
+}
+footer {
+    flex-shrink: 0;
+}
+
+/* Custom Navigation Styles */
+.quiz-nav {
+    display: flex;
+    justify-content: stretch; /* Stretch nav items to fill the container */
+    padding: 0;
+    margin-top: 50px; /* Add top margin */
+    width: 100%; /* Span the full width */
+    list-style: none; /* Remove bullet points from list */
+    box-sizing: border-box; /* Include padding and border in the width */
+}
+
+.quiz-nav li {
+    flex-grow: 1; /* Grow each item to fill the container */
+    height: 50px; /* Set the height of nav items */
+    background-color: #eee; /* Soft grey */
+    margin: 0 5px; /* Keep a small margin between items */
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    text-align: center; /* Center text within each nav item */
+    display: flex;
+    align-items: center; /* Center the text vertically */
+    justify-content: center; /* Center the text horizontally */
+}
+.quiz-nav li.active {
+    background-color: #4CAF50; /* Soft green */
+    color: white;
+    position: relative;
+}
+.quiz-nav li.active::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: #2E7D32; /* Darker green */
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+}
+.quiz-nav li:not(.active) {
+    color: #777; /* Darker grey for text */
+}
+@media (max-width: 576px) {
+    .quiz-nav li {
+        padding: 10px;
+        font-size: 14px;
+    }
+}

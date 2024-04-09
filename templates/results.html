@@ -1,33 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height: 100%;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Results</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .btn-custom {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 24px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn-custom:hover {
-            background-color: #45a049;
-        }
-
-        .btn-container {
-            display: inline-block;
-            margin-right: 10px;
-        }
-    </style>
+    <link href="styles.css" rel="stylesheet">
 </head>
-<body>
-    <div class="container mt-5">
+<body class="d-flex flex-column h-100">
+    <!-- Responsive Quiz Navigation -->
+    <ul class="quiz-nav">
+        <li>Quiz</li>
+        <li>Questions</li>
+        <li class="active">Results</li>
+    </ul>
+
+    <div class="container mt-3 flex-grow-1">
         <h2 class="text-center">Quiz Results</h2>
         <div class="alert alert-success" role="alert">
             <h4 class="alert-heading">Well done!</h4>
@@ -65,7 +53,16 @@
         </div>
     </div>
 
+    <!-- Footer -->
+    <footer class="text-center text-lg-start bg-light text-muted mt-auto">
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+            <div>
+                <span>Disclaimer: No guarantee for the correctness of quiz answers. Please verify with authoritative sources where necessary.</span>
+            </div>
+        </section>
+    </footer>
+    <!-- Footer -->
     <!-- Link to the external JavaScript file at the end of the body -->
-     <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

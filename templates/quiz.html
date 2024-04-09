@@ -1,13 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height: 100%;">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta viewport="width=device-width, initial-scale=1.0">
     <title>Design Patterns Quiz</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
 </head>
-<body>
-    <div class="container mt-5">
+<body class="d-flex flex-column h-100">
+    <!-- Responsive Quiz Navigation -->
+    <ul class="quiz-nav">
+        <li class="active">Quiz</li>
+        <li>Questions</li>
+        <li>Results</li>
+    </ul>
+
+    <div class="container mt-3 flex-grow-1">
         <h2 class="text-center">How many questions do you want to answer?</h2>
         <form action="/start_quiz" method="post" class="text-center mt-3">
             <div class="form-group">
@@ -16,5 +24,15 @@
             <button type="submit" class="btn btn-success">Start Quiz</button>
         </form>
     </div>
+
+    <!-- Footer -->
+    <footer class="text-center text-lg-start bg-light text-muted mt-auto">
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+            <div>
+                <span>Disclaimer: No guarantee for the correctness of quiz answers. Please verify with authoritative sources where necessary.</span>
+            </div>
+        </section>
+    </footer>
+    <!-- Footer -->
 </body>
 </html>
